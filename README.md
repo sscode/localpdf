@@ -1,65 +1,66 @@
-# pdfai
+# localpdf
 
-A local PDF extraction tool that converts PDFs to structured markdown, tables, and document structure — no cloud, no API keys.
+Extract text, tables, and structure from any PDF — runs entirely on your computer. No cloud services, no API keys, no sign-ups.
 
-## What it does
+## What you get
 
-Upload a PDF and get back:
-- **Full text** — exported as clean markdown
-- **Tables** — extracted as structured row/column data
+Upload a PDF and instantly get back:
+
+- **Full text** as clean, readable markdown
+- **Tables** with rows and columns preserved
 - **Document structure** — headings, paragraphs, captions, and more
 
-Powered by [Docling](https://github.com/DS4SD/docling) for high-quality PDF parsing.
+Everything runs locally using [Docling](https://github.com/DS4SD/docling), an open-source PDF parser.
 
-## Stack
+## Setup
 
-- **Backend** — FastAPI + Docling (Python)
-- **Frontend** — Vanilla JS + Vite
+You'll need two things installed on your machine before starting:
 
-## Getting started
+1. **Python 3.10 or newer** — [Download Python](https://www.python.org/downloads/)
+2. **Node.js 18 or newer** — [Download Node.js](https://nodejs.org/)
 
-### Prerequisites
+Not sure if you already have them? Open your terminal and run:
 
-- Python 3.10+
-- Node.js 18+
+```bash
+python3 --version
+node --version
+```
 
-### Backend
+If both print a version number, you're good to go.
+
+### Step 1: Set up the backend
+
+Open your terminal, navigate to the project folder, and run:
 
 ```bash
 cd backend
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Frontend
+> This creates an isolated Python environment and installs the dependencies. The first install may take a few minutes.
+
+### Step 2: Set up the frontend
+
+In a new terminal window (or go back to the project root):
 
 ```bash
 cd frontend
 npm install
 ```
 
-### Run
+### Step 3: Start the app
+
+From the project root:
 
 ```bash
 ./start.sh
 ```
 
-Then open [http://localhost:5173](http://localhost:5173).
+Then open **http://localhost:5173** in your browser. That's it — upload a PDF and see the results.
 
-## API
-
-`POST /extract` — multipart form upload with a `file` field (PDF only).
-
-Returns:
-
-```json
-{
-  "text": "...",
-  "tables": [{ "data": [["col1", "col2"], ["val1", "val2"]] }],
-  "structure": [{ "type": "heading", "text": "..." }]
-}
-```
+To stop the app, press `Ctrl+C` in the terminal.
 
 ## License
 
